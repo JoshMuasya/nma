@@ -27,7 +27,6 @@ const Footer: React.FC<FooterProps> = ({
         { label: "Services", href: "/services" },
         { label: "About", href: "/about" },
     ],
-    primaryColor = "#2a3b82",
     textColor = "#6c8ebf",
     buttonText = "Schedule a Consultation",
     buttonLink = "/contact",
