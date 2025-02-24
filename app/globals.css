@@ -2,4 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.hero {
+    background-image: url("../public/hero.jpg");
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+}
 

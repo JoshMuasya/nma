@@ -7,18 +7,9 @@ import FilledButton from "./FilledButton";
 import { BiPhoneCall } from "react-icons/bi";
 import { MdAttachEmail } from "react-icons/md";
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaLocationDot } from "react-icons/fa6";
-import React, { JSX } from "react";
+import React from "react";
+import { FooterProps } from "@/types";
 
-type FooterProps = {
-    logoSrc?: string;
-    menuItems?: { label: string; href: string }[];
-    primaryColor?: string;
-    textColor?: string;
-    buttonText?: string;
-    buttonLink?: string;
-    socialLinks?: { facebook?: string; instagram?: string; linkedin?: string };
-    contactInfo?: { label: string; icon: JSX.Element }[];
-};
 
 const Footer: React.FC<FooterProps> = ({
     logoSrc = "/logo.png",
@@ -28,6 +19,7 @@ const Footer: React.FC<FooterProps> = ({
         { label: "About", href: "/about" },
     ],
     textColor = "#6c8ebf",
+    backColor = "#2a3b82",
     buttonText = "Schedule a Consultation",
     buttonLink = "/contact",
     socialLinks = {
@@ -69,8 +61,25 @@ const Footer: React.FC<FooterProps> = ({
                 <div className="flex flex-col items-center md:items-start space-y-4">
                     <h1 className="font-bold text-xl" style={{ color: "#1eb1e7" }}>Quick Links</h1>
                     {menuItems.map((item, index) => (
-                        <motion.div key={index} whileHover={{ scale: 1.1, color: "#1eb1e7", transition: { type: "spring", stiffness: 200, damping: 10 } }}>
-                            <Link href={item.href} className="text-base md:text-xl transition-opacity hover:opacity-80" style={{ color: textColor }}>
+                        <motion.div
+                            key={index}
+                            whileHover={{
+                                scale: 1.1,
+                                color: "#1eb1e7",
+                                transition: {
+                                    type: "spring",
+                                    stiffness: 200,
+                                    damping: 10
+                                }
+                            }}
+                        >
+                            <Link
+                                href={item.href}
+                                className="text-base md:text-xl transition-opacity hover:opacity-80"
+                                style={{ color: textColor }}
+                                onMouseEnter={(e) => (e.currentTarget.style.color = "#1eb1e7")}
+                                onMouseLeave={(e) => (e.currentTarget.style.color = textColor)}
+                            >
                                 {item.label}
                             </Link>
                         </motion.div>
@@ -88,14 +97,22 @@ const Footer: React.FC<FooterProps> = ({
                             whileHover={{ scale: 1.05, x: -5, color: "#1eb1e7", transition: { type: "spring", stiffness: 300, damping: 10 } }}
                             className="flex items-center space-x-2 py-2"
                         >
-                            <motion.span className="text-sm md:text-base" style={{ color: textColor }}>
+                            <motion.span
+                                className="text-sm md:text-base"
+                                style={{ color: backColor }}
+                                onMouseEnter={(e) => (e.currentTarget.style.color = "#1eb1e7")}
+                                onMouseLeave={(e) => (e.currentTarget.style.color = textColor)}
+                            >
                                 {item.label}
                             </motion.span>
                             <motion.div
                                 animate={{ rotate: 0 }}
                                 whileHover={{ rotate: 15 }}
                                 transition={{ duration: 0.3 }}
+                                style={{ color: textColor }}
                                 className="w-6 h-6 hidden md:flex"
+                                onMouseEnter={(e) => (e.currentTarget.style.color = "#1eb1e7")}
+                                onMouseLeave={(e) => (e.currentTarget.style.color = textColor)}
                             >
                                 {item.icon}
                             </motion.div>
@@ -109,8 +126,17 @@ const Footer: React.FC<FooterProps> = ({
                 {Object.entries(socialLinks).map(([key, url]) => {
                     const Icon = key === "facebook" ? FaFacebookF : key === "instagram" ? FaInstagram : FaLinkedinIn;
                     return (
-                        <motion.a key={key} href={url} target="_blank" rel="noopener noreferrer" className="text-white text-xl md:text-2xl" whileHover={{ rotate: 15 }}>
-                            <Icon style={{ color: textColor }} onMouseEnter={(e) => (e.currentTarget.style.color = "#1eb1e7")} onMouseLeave={(e) => (e.currentTarget.style.color = textColor)} />
+                        <motion.a
+                            key={key}
+                            href={url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-white text-xl md:text-2xl"
+                            whileHover={{ rotate: 15 }}>
+                            <Icon
+                                style={{ color: textColor }}
+                                onMouseEnter={(e) => (e.currentTarget.style.color = "#1eb1e7")}
+                                onMouseLeave={(e) => (e.currentTarget.style.color = textColor)} />
                         </motion.a>
                     );
                 })}
