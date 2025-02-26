@@ -38,7 +38,7 @@ const Footer: React.FC<FooterProps> = ({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
-            className="bg-gradient-to-b from-[#2a3b82]/10 via-[#2a3b82]/15 to-[#1eb1e7]/20 backdrop-blur-lg text-white py-6 shadow-[0px_-10px_20px_#1eb1e7] rounded-t-[50px] flex flex-col items-center"
+            className="mt-auto w-full bg-gradient-to-b from-[#2a3b82]/10 via-[#2a3b82]/15 to-[#1eb1e7]/20 backdrop-blur-lg text-white py-6 shadow-[0px_-10px_20px_#1eb1e7] rounded-t-[50px] flex flex-col items-center relative"
         >
             <div className="container mx-auto text-center px-4 md:px-8 grid grid-cols-1 md:grid-cols-3 gap-8">
                 {/* Logo */}
@@ -142,7 +142,7 @@ const Footer: React.FC<FooterProps> = ({
                 })}
             </div>
 
-            <div className="bg-[#2a3b82] w-full text-center py-2 fixed bottom-0">
+            <div className="bg-[#2a3b82] w-full text-center py-2 absolute bottom-0">
                 <p className="text-xs md:text-sm" style={{ color: textColor }}>&copy; 2025 Nyiha Mathenge Advocates. All Rights Reserved.</p>
             </div>
         </motion.footer>

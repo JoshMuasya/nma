@@ -14,6 +14,7 @@ const Navbar = ({
     { name: "HOME", path: "/" },
     { name: "SERVICES", path: "/services" },
     { name: "ABOUT", path: "/about" },
+    { name: "CONTACT", path: "/contact" },
   ], []);
 
   return (
@@ -21,7 +22,7 @@ const Navbar = ({
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="fixed top-0 left-0 w-full p-5 bg-transparent z-50"
+      className="fixed top-0 left-0 w-full p-5 z-50 bg-gradient-to-b from-[#2a3b82]/5 via-[#2a3b82]/10 to-[#1eb1e7]/15 backdrop-blur-lg"
       style={{ willChange: "opacity" }}
     >
       <div className="flex justify-between items-center">
